@@ -1,0 +1,147 @@
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #dee2e6;
+}
+
+.stat-item {
+  text-align: center;
+  min-width: 80px;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #495057;
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-divider {
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, #dee2e6, transparent);
+  border-radius: 1px;
+}
+
+/* Animation for value changes */
+.stat-value {
+  animation: valueUpdate 0.3s ease-in-out;
+}
+
+@keyframes valueUpdate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    color: #007bff;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Color coding for different performance levels */
+.stat-item:first-child .stat-value {
+  color: #28a745; /* Green for WPM */
+}
+
+.stat-item:last-child .stat-value {
+  color: #007bff; /* Blue for Accuracy */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats {
+    padding: 15px 20px;
+    gap: 15px;
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .stat-divider {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    padding: 12px 15px;
+    gap: 10px;
+  }
+  
+  .stat-item {
+    min-width: 60px;
+  }
+  
+  .stat-value {
+    font-size: 1.8rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  .stat-divider {
+    height: 35px;
+  }
+}
+
+/* High performance indicators */
+.stat-item.high-performance .stat-value {
+  color: #28a745;
+  text-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+}
+
+.stat-item.excellent-performance .stat-value {
+  color: #ffc107;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .stat-value {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .stats {
+    background: linear-gradient(135deg, #343a40, #495057);
+    border-color: #495057;
+  }
+  
+  .stat-value {
+    color: #f8f9fa;
+  }
+  
+  .stat-label {
+    color: #adb5bd;
+  }
+  
+  .stat-divider {
+    background: linear-gradient(to bottom, transparent, #6c757d, transparent);
+  }
+}

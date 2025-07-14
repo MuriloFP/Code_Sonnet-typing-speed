@@ -1,0 +1,186 @@
+.typing-test {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.passage-container {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 30px;
+  border: 2px solid #e9ecef;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passage-text {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.char {
+  position: relative;
+  transition: all 0.1s ease;
+}
+
+.char.correct {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.char.incorrect {
+  background-color: #f8d7da;
+  color: #721c24;
+  animation: shake 0.3s ease-in-out;
+}
+
+.char.current {
+  background-color: #007bff;
+  color: white;
+  animation: blink 1s infinite;
+}
+
+.char.pending {
+  color: #6c757d;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+.input-container {
+  position: relative;
+}
+
+.typing-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 20px;
+  border: 2px solid #dee2e6;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-family: 'Inter', monospace;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.typing-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.typing-input:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.typing-input::placeholder {
+  color: #adb5bd;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .passage-container {
+    padding: 20px;
+    min-height: 150px;
+  }
+  
+  .passage-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .typing-input {
+    font-size: 1.1rem;
+    min-height: 100px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .passage-container {
+    padding: 15px;
+  }
+  
+  .passage-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .typing-input {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* Accessibility improvements */
+.char.correct,
+.char.incorrect,
+.char.current {
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .char.correct {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .char.incorrect {
+    background-color: #ff0000;
+    color: #fff;
+  }
+  
+  .char.current {
+    background-color: #0000ff;
+    color: #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .char,
+  .typing-input {
+    transition: none;
+  }
+  
+  .char.incorrect {
+    animation: none;
+  }
+  
+  .char.current {
+    animation: none;
+    background-color: #007bff;
+  }
+}
